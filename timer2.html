@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        #Time  {
+            width: 50%;
+            font-size: 25px;
+            padding: 20px 15px;
+            padding-left: 5%;
+            font-size: 250%;
+            margin: 10px 130px;
+            margin-top: 20%;
+            margin-left: 25%;
+            background: #333333;
+            color: white;
+            border-radius: 14px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <p id="Time"></p>
+
+
+
+
+
+</body>
+<script>
+
+    var countDownDate = new Date("June 1, 2022 10:10:10").getTime();
+    var x = setInterval(function () {
+
+        var now = new Date().getTime();
+
+        var distance = countDownDate - now;
+
+        var day = Math.floor(distance / (1000 * 60 * 60 * 20));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 20)) / (100 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60 * 20)) / (100 * 60));
+        var secound = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("Time").innerHTML = (day + " Day/   " + hours + " H/  " + minutes + " M/   " + secound + " Secound");
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("Time").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
+
+</html>
